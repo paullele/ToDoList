@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="daD-hB-G7U">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--My list of tasks-->
+        <scene sceneID="hNz-n2-bh7">
+            <objects>
+                <viewController id="9pv-A4-QxB" customClass="TaskViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
+                        <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="neh-wJ-TMj">
+                                <rect key="frame" x="0.0" y="29" width="375" height="638"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="Ltp-Xh-Cum"/>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="P1w-YS-BeL"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="neh-wJ-TMj" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" constant="29" id="12W-MT-vwL"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="neh-wJ-TMj" secondAttribute="bottom" id="dZh-eG-g59"/>
+                            <constraint firstAttribute="trailing" secondItem="neh-wJ-TMj" secondAttribute="trailing" id="iVQ-97-OaN"/>
+                            <constraint firstItem="neh-wJ-TMj" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="jF1-N6-CvM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="My list of tasks" id="WTR-LP-SWl">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="HIo-nN-EBw">
+                            <connections>
+                                <segue destination="C5L-YD-biP" kind="presentation" identifier="AddItem" id="beB-Ai-GmE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableTask" destination="neh-wJ-TMj" id="dNp-el-v58"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="728.79999999999995" y="-215.44227886056973"/>
+        </scene>
+        <!--Add Task-->
+        <scene sceneID="8Da-s0-5y8">
+            <objects>
+                <viewController id="ykO-Ou-8zi" customClass="AddTaskViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kk2-Nd-CNv"/>
+                        <viewControllerLayoutGuide type="bottom" id="71U-MZ-dFo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="i7f-TA-oNJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fU2-qi-JIK">
+                                <rect key="frame" x="16" y="72" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ykO-Ou-8zi" id="P3y-wl-jhf"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fU2-qi-JIK" firstAttribute="top" secondItem="kk2-Nd-CNv" secondAttribute="bottom" constant="8" symbolic="YES" id="Vh8-tk-YpZ"/>
+                            <constraint firstItem="fU2-qi-JIK" firstAttribute="leading" secondItem="i7f-TA-oNJ" secondAttribute="leadingMargin" id="lKR-h5-8Oc"/>
+                            <constraint firstItem="fU2-qi-JIK" firstAttribute="trailing" secondItem="i7f-TA-oNJ" secondAttribute="trailingMargin" id="qBQ-dp-g9a"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Task" id="EsJ-ic-Jk4">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="IZ6-sB-0fa">
+                            <connections>
+                                <action selector="cancel:" destination="ykO-Ou-8zi" id="zJz-a8-faq"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add Task" id="N8Z-B5-UCZ">
+                            <connections>
+                                <action selector="addTask:" destination="ykO-Ou-8zi" id="fY2-BI-x8e"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textField" destination="fU2-qi-JIK" id="e6B-E4-X06"/>
+                        <segue destination="yoj-gP-ikY" kind="unwind" identifier="unwindToTasks" unwindAction="unwindToTasksWithSender:" id="hkf-2g-usH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gib-7v-0hj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="yoj-gP-ikY" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2636" y="-215.44227886056973"/>
+        </scene>
+        <!--Tasks-->
+        <scene sceneID="VWt-aK-oOV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="daD-hB-G7U" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Tasks" image="first" id="acW-dT-cKf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oNC-cn-JpF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="6Xg-70-3HR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H98-Wh-v6V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-210.40000000000001" y="-215.44227886056973"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="trF-IZ-doh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C5L-YD-biP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Q5O-RP-tfR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ykO-Ou-8zi" kind="relationship" relationship="rootViewController" id="TLa-al-ckW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Xu-A5-AeN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1696.8" y="-215.44227886056973"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="first" width="30" height="30"/>
+    </resources>
+</document>
