@@ -7,16 +7,23 @@
 //
 
 import UIKit
-import os.log
 
 class AddTaskViewController: UIViewController, UITextFieldDelegate {
 
     var task: String?
+    var index: Int?
+    var onEdit: Bool?
+    
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var taskControllerButon: UIBarButtonItem!
     
     @IBAction func addTask(_ sender: UIBarButtonItem) {
         let task = textField.text ?? ""
-        taskManager.taskArray.append(task)
+        if(!onEdit!) {
+            taskManager.taskArray.append(task)
+        } else {
+            taskManager.taskArray[index!] = task
+        }
         textField.text = ""
         self.performSegue(withIdentifier: "unwindToTasks", sender: self)
     }
@@ -28,6 +35,9 @@ class AddTaskViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        if(onEdit!) {
+            taskControllerButon.title = "Update"
+        }
         textField.text = task ?? ""
     }
 

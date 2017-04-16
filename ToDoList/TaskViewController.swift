@@ -9,6 +9,11 @@
 import UIKit
 
 class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    struct Cell {
+        var title: String!
+        var index: Int!
+    }
 
     @IBOutlet weak var tableTask: UITableView!
     
@@ -31,7 +36,13 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddItem" {
             if let controller = (segue.destination as! UINavigationController).topViewController as?  AddTaskViewController {
-                controller.task = sender as? String
+                if let task = sender as? Cell {
+                    controller.onEdit = true
+                    controller.task = task.title
+                    controller.index = task.index
+                } else {
+                    controller.onEdit = false
+                }
             }
         }
     }
@@ -43,7 +54,7 @@ class TaskViewController: UIViewController, UITableViewDataSource, UITableViewDe
         })
         
         let edit = UITableViewRowAction(style: UITableViewRowActionStyle.normal, title: "Edit", handler: {action in
-            let cell = taskManager.taskArray[indexPath.row]
+            let cell = Cell(title: taskManager.taskArray[indexPath.row], index: indexPath.row)
             self.performSegue(withIdentifier: "AddItem", sender: cell)
         })
         

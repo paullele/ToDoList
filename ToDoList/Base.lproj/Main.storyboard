@@ -96,6 +96,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="taskControllerButon" destination="N8Z-B5-UCZ" id="Fo9-nC-r5N"/>
                         <outlet property="textField" destination="fU2-qi-JIK" id="e6B-E4-X06"/>
                         <segue destination="yoj-gP-ikY" kind="unwind" identifier="unwindToTasks" unwindAction="unwindToTasksWithSender:" id="hkf-2g-usH"/>
                     </connections>
